@@ -1,5 +1,5 @@
 .reader {
-  width: 50%;
+  width: 80%;
   height: 500px;
   border: 3px solid black;
   border-radius: 10px;
@@ -8,14 +8,21 @@
 #readArea {
   width: 80%;
   height: 80px;
-  /*overflow: hidden;*/
-  margin: 10px auto;
+  margin: 15px auto 0px auto;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
   font-size: 4.5vw;
 }
+#readArea:after {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 1px;
+  width: 100%;
+  display: block;
+}
 .word {
-  /*position: fixed;*/
+  margin-top: 20px;
 }
 #input {
   height: 100px;
@@ -43,7 +50,12 @@ textarea {
   background: black;
   color: white;
 }
+
 #WPM {
   color: black;
   margin: 10px auto;
+}
+#reset {
+  float: left;
+  margin-top: -20px;
 }
