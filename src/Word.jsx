@@ -9,22 +9,35 @@ var Word = React.createClass({
       curentWord: this.props.word,
       reading: this.props.reading,
       done: false,
-      speed: 1000
+      speed: Number(this.props.speed)
     };
   },
 
-  componentDidMount: function() {
-    var intervalId = setInterval(this.timer, 250);
-    this.setState({ intervalId: intervalId });
+  // componentDidMount: function() {
+  //   var intervalId = setInterval(this.timer, this.props.speed);
+  //   this.setState({ intervalId: intervalId });
+  // },
+
+  componentWillReceiveProps: function(nextProps) {
+    // console.log("This State" + this.state.reading)
+    // console.log(nextProps.reading)
+    if (nextProps.reading) {
+      // console.log("setting interval" + this.state.speed)
+      var intervalId = setInterval(this.timer, Number(this.state.speed));
+      // console.log(intervalId)
+      // console.log(this.state.intervalId)
+      this.setState({ intervalId: intervalId });
+    } else {
+      this.setState({ speed: Number(nextProps.speed), intervalId: '', reading: false })
+      clearInterval(this.state.intervalId);
+    }
   },
 
   componentWillUnmount: function() {
-    console.log("will unmount")
     clearInterval(this.state.intervalId);
   },
 
   timer: function() {
-    if (this.props.reading) { this.setState({ speed: 250 }) }
     if (this.state.currentCount < this.props.arr.length && this.props.reading) {
       this.setState({ currentCount: this.state.currentCount + 1, reading: true });
     } else if (this.state.currentCount >= this.props.arr.length) {
