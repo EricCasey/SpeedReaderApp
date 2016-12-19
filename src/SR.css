@@ -1,5 +1,6 @@
 .reader {
   width: 80%;
+  max-width: 500px;
   height: 500px;
   border: 3px solid black;
   border-radius: 10px;
@@ -12,6 +13,7 @@
   border-top: 3px solid black;
   border-bottom: 3px solid black;
   font-size: 4.5vw;
+  overflow:hidden;
 }
 .word {
   margin-top: 20px;
@@ -22,13 +24,47 @@
 textarea {
   width: 90%;
   height: 90%;
-  margin: 2px auto;
+  margin: 10px auto;
+  resize: none;
+  border-radius: 5px;
+}
+#WPM {
+  color: black;
+  width: 90%;
+  display: flex;
+}
+h3 {
+  color: black;
+}
+#rawSpeed {
+  float:left;
+  margin: 0 5px;
+}
+#speed {
+  flex-grow: 1;
+}
+#wordSpeed {
+  float:right;
+  margin: 0 5px;
+}
+
+#modes {
+  display: flex;
+}
+.mode {
+  flex-grow: 1;
+}
+
+#reset {
+  float: left;
+  margin-top: -20px;
 }
 #controls {
   width: 100%;
   height: 40%;
   color: white;
 }
+
 #start {
   margin: 10px auto;
   width: 50%;
@@ -43,11 +79,32 @@ textarea {
   color: white;
 }
 
-#WPM {
-  color: black;
+#notes {
+  color:blue;
+}
+#reticle {
+  width: 50%;
+  height: 100%;
+  float: left;
+  background: none;
+  border-right: 3px solid gray;
+  z-index: 9999;
+  margin-top: -20%;
+}
+.controller {
+  /*border:1px solid black;*/
+  max-width: 90%;
   margin: 10px auto;
 }
-#reset {
-  float: left;
-  margin-top: -20px;
+.mono {
+  font-family: 'Source Code Pro', monospace;
+}
+.sans {
+  font-family: 'Nunito Sans', sans-serif;
+}
+.serif {
+  font-family: 'Lora', serif;
+}
+#wordNow {
+
 }

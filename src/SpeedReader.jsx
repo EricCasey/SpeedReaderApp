@@ -12,7 +12,9 @@ class SpeedReader extends Component {
             currentWord: 'input text to read',
             reading: false,
             wordNum: 0,
-            speed: 250
+            speed: 250,
+            readMode: 'centre',
+            font: 'serif'
         }
     }
 
@@ -24,6 +26,16 @@ class SpeedReader extends Component {
             currentWord: value.split(' ')[0],
             reading: false
         })
+    }
+
+    handleModeChange = (value, name) => {
+      // console.log(value)
+      this.setState({readMode: value})
+    }
+
+    handleFontChange = (value, name) => {
+      // console.log(value,name)
+      this.setState({font: value})
     }
 
     toggleReading = () => {
@@ -40,15 +52,77 @@ class SpeedReader extends Component {
     render() {
         return (
             <div className="reader">
+              <h1><i>*silly name here*</i></h1>
                 <div id="readArea">
+
                     <div className="word">
-                        <Word word={this.state.currentWord} arr={this.state.wallArr} reading={this.state.reading} wordNum={this.state.wordNum} speed={Number(this.state.speed)}/>
+                        <Word
+                          word={this.state.currentWord}
+                          arr={this.state.wallArr}
+                          reading={this.state.reading}
+                          wordNum={this.state.wordNum}
+                          speed={Number(this.state.speed)}
+                          mode={this.state.readMode}
+                          font={this.state.font}/>
                     </div>
+                      <div id="reticle"></div>
                 </div>
                 <div id="input">
                     <textarea defaultValue={this.state.wall} onChange={(e) => {
                         this.handleOnChange(e.target.value, e.target.name)
                     }}></textarea>
+                </div>
+
+                <div
+                  id="modes"
+                  className="controller"
+                  onChange={(e) => {
+                    this.handleModeChange(e.target.value, e.target.name)
+                    }}
+                >
+                  <div className="mode">
+                    <input type="radio" name="readMode" value="centre" defaultChecked
+                      title="Centre-aligned words"/>
+                    Middle
+                  </div>
+                  <div className="mode">
+                    <input type="radio" name="readMode" value="sprits"
+                      title="something like for every (arr.length/2)-1 methinks. close enough" />
+                    Sptirx
+                  </div>
+                  <div className="mode">
+                    <input type="radio" name="readMode" value="mashed"
+                      title="This one will be the thing where the middle letter are jumbled but the first and last are the same" />
+                    Mashed
+                  </div>
+                </div>
+                <div id="WPM" className="controller">
+                    <h5 id="rawSpeed">{this.state.speed} ms/word</h5>
+                    <input id="speed" type="range" min="100" max="750" step="10" defaultValue="250" onChange={this.speedChange}/>
+                    <h5 id="wordSpeed">{(60000/this.state.speed).toFixed(0)} WPM</h5>
+                </div>
+                <div
+                  id="modes"
+                  className="controller"
+                  onChange={(e) => {
+                    this.handleFontChange(e.target.value, e.target.name)
+                    }}
+                >
+                  <div className="mode">
+                    <input type="radio" name="readFont" value="sans" defaultChecked
+                      title="Read in a Sans-Serif Font"/>
+                    Sans
+                  </div>
+                  <div className="mode">
+                    <input type="radio" name="readFont" value="serif"
+                      title="Read in a Serif Font"/>
+                    Serif
+                  </div>
+                  <div className="mode">
+                    <input type="radio" name="readFont" value="mono"
+                      title="Read in a monospace font" />
+                    Mono
+                  </div>
                 </div>
                 <div id="controls">
                     <div id="start" onClick={this.toggleReading}>
@@ -56,18 +130,16 @@ class SpeedReader extends Component {
                             ? 'Stop'
                             : 'Start'}
                     </div>
-                    <div id="WPM">
-                        <input id="speed" type="range" min="50" max="1000" step="10" defaultValue="250" onChange={this.speedChange}/>
-                        <h5>{this.state.speed} ms interval</h5>
-                        <h5>{(60000/this.state.speed).toFixed(2)} WPM</h5>
-                        <div>
+                    <div id="notes"><i>
                             <h3>
                                 -tmp notes-
                             </h3>
-                            <li>[done] should I tie the speed to a slider</li>
-                            <li>word alignment modes!!!!</li>
+                            <li>Mashuped Mode</li>
+                            <li>Spritz-like Mode</li>
+                            <li>Acceleration</li>
+                            <li>dim screen</li>
+                            </i>
                         </div>
-                    </div>
                 </div>
             </div>
         );

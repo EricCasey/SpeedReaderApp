@@ -9,13 +9,20 @@ var Word = React.createClass({
       curentWord: this.props.word,
       reading: this.props.reading,
       done: false,
-      speed: Number(this.props.speed)
+      speed: Number(this.props.speed),
+      font: 'sans',
+      readMode: 'centre'
     };
   },
 
   componentWillReceiveProps: function(nextProps) {
     // console.log("This State" + this.state.reading)
     // console.log(nextProps.reading)
+    if (nextProps.font !== this.state.font) {
+      if (nextProps.font === 'mono') { this.setState({ font: nextProps.font })}
+      if (nextProps.font === 'serif') { this.setState({ font: nextProps.font })}
+      if (nextProps.font === 'sans') { this.setState({ font: nextProps.font })}
+    }
     if (nextProps.reading) {
       // console.log("setting interval" + this.state.speed)
       var intervalId = setInterval(this.timer, Number(this.state.speed));
@@ -23,7 +30,11 @@ var Word = React.createClass({
       // console.log(this.state.intervalId)
       this.setState({ intervalId: intervalId });
     } else {
-      this.setState({ speed: Number(nextProps.speed), intervalId: '', reading: false })
+      this.setState({ speed: Number(nextProps.speed),
+                      intervalId: '',
+                      reading: false,
+                      readMode: this.props.readMode
+                    })
       clearInterval(this.state.intervalId);
     }
   },
@@ -53,7 +64,7 @@ var Word = React.createClass({
           src="http://support.showreelfinder.com/hc/en-us/article_attachments/201500876/reset.png"
           onClick={this.reset}
           height="20px" width="20px"/>
-        {this.props.arr[this.state.currentCount]}
+        <p id="wordNow" className={this.state.font}>{this.props.arr[this.state.currentCount]}</p>
       </section>
     );
   }
