@@ -13,11 +13,6 @@ var Word = React.createClass({
     };
   },
 
-  // componentDidMount: function() {
-  //   var intervalId = setInterval(this.timer, this.props.speed);
-  //   this.setState({ intervalId: intervalId });
-  // },
-
   componentWillReceiveProps: function(nextProps) {
     // console.log("This State" + this.state.reading)
     // console.log(nextProps.reading)
