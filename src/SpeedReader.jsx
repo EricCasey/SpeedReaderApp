@@ -12,7 +12,7 @@ class SpeedReader extends Component {
             currentWord: 'input text to read',
             reading: false,
             wordNum: 0,
-            speed: '200'
+            speed: 0
         }
     }
 
@@ -28,6 +28,12 @@ class SpeedReader extends Component {
 
     toggleReading = () => {
       this.state.reading ? this.setState({ reading: false }) : this.setState({ reading: true })
+    }
+
+    speedChange = (event) => {
+      this.setState({ speed: event.target.value })
+      this.forceUpdate()
+      return event.target.value
     }
 
     render() {
@@ -53,18 +59,17 @@ class SpeedReader extends Component {
                       { this.state.reading ? 'Stop' : 'Start' }
                     </div>
                     <div id="WPM">
-                      <select>
-                        <option value='50'>50 words per min</option> // for testing obviously
-                        <option value='100'>100 words per min</option>
-                        <option value='200'>200 words per min</option>
-                        <option value='1000'>1000 words per min</option>
+                      <select onChange={this.speedChange}>
+                        <option value='60'>60</option>
+                        <option value='200'>200</option>
+                        // wtf... does this make sense?
+                        <option value='500'>500</option>
+                        <option value='5000'>5000</option>
                       </select>
                       <div>
                         <h3> - tmp notes- </h3>
-                        <li>start logic to be fixed</li>
-                        <li>make it not start automatically fak</li>
                         <li>should I tie the speed to a slider</li>
-                        <li>pause & reset</li>
+                        <li>word alignment</li>
                       </div>
                     </div>
                 </div>

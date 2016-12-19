@@ -13,14 +13,6 @@
   border-bottom: 3px solid black;
   font-size: 4.5vw;
 }
-#readArea:after {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  height: 1px;
-  width: 100%;
-  display: block;
-}
 .word {
   margin-top: 20px;
 }

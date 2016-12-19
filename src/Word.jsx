@@ -8,12 +8,13 @@ var Word = React.createClass({
       currentCount: 0,
       curentWord: this.props.word,
       reading: this.props.reading,
-      done: false
+      done: false,
+      speed: 1000
     };
   },
 
   componentDidMount: function() {
-    var intervalId = setInterval(this.timer, 75);
+    var intervalId = setInterval(this.timer, 250);
     this.setState({ intervalId: intervalId });
   },
 
@@ -23,6 +24,7 @@ var Word = React.createClass({
   },
 
   timer: function() {
+    if (this.props.reading) { this.setState({ speed: 250 }) }
     if (this.state.currentCount < this.props.arr.length && this.props.reading) {
       this.setState({ currentCount: this.state.currentCount + 1, reading: true });
     } else if (this.state.currentCount >= this.props.arr.length) {
