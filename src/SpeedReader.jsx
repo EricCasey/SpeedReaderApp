@@ -14,7 +14,7 @@ class SpeedReader extends Component {
             wordNum: 0,
             speed: 250,
             readMode: 'centre',
-            font: 'serif'
+            font: 'sans'
         }
     }
 
@@ -52,7 +52,7 @@ class SpeedReader extends Component {
     render() {
         return (
             <div className="reader">
-              <h1><i>*silly name here*</i></h1>
+              <h1><i>ReadQuik.io</i></h1>
                 <div id="readArea">
 
                     <div className="word">
@@ -73,7 +73,7 @@ class SpeedReader extends Component {
                     }}></textarea>
                 </div>
 
-                <div
+             <div
                   id="modes"
                   className="controller"
                   onChange={(e) => {
@@ -98,11 +98,15 @@ class SpeedReader extends Component {
                 </div>
                 <div id="WPM" className="controller">
                     <h5 id="rawSpeed">{this.state.speed} ms/word</h5>
-                    <input id="speed" type="range" min="100" max="750" step="10" defaultValue="250" onChange={this.speedChange}/>
+                    <input id="speed" type="range" min="100" max="1000" step="10" defaultValue="250" onChange={this.speedChange}/>
                     <h5 id="wordSpeed">{(60000/this.state.speed).toFixed(0)} WPM</h5>
                 </div>
+                <div id="details">
+                  <p>{this.state.wallArr.length} words</p>
+                  <p>{(this.state.wallArr.length/((60000/this.state.speed))).toFixed(2)} min to read</p>
+                </div>
                 <div
-                  id="modes"
+                  id="fontModes"
                   className="controller"
                   onChange={(e) => {
                     this.handleFontChange(e.target.value, e.target.name)
@@ -132,12 +136,13 @@ class SpeedReader extends Component {
                     </div>
                     <div id="notes"><i>
                             <h3>
-                                -tmp notes-
+                                -Next Steps-
                             </h3>
                             <li>Mashuped Mode</li>
                             <li>Spritz-like Mode</li>
                             <li>Acceleration</li>
                             <li>dim screen</li>
+                            <li>responsivenessessing</li>
                             </i>
                         </div>
                 </div>

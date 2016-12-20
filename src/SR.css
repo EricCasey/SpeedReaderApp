@@ -9,10 +9,10 @@
 #readArea {
   width: 80%;
   height: 80px;
-  margin: 15px auto 0px auto;
+  margin: 0px auto 0px auto;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
-  font-size: 4.5vw;
+  font-size: 25pt;
   overflow:hidden;
 }
 .word {
@@ -47,14 +47,16 @@ h3 {
   float:right;
   margin: 0 5px;
 }
-
-#modes {
+#fontModes {
   display: flex;
+}
+#modes {
+  display: none;
+  /*no time :(*/
 }
 .mode {
   flex-grow: 1;
 }
-
 #reset {
   float: left;
   margin-top: -20px;
@@ -90,6 +92,7 @@ h3 {
   border-right: 3px solid gray;
   z-index: 9999;
   margin-top: -20%;
+  display:none;
 }
 .controller {
   /*border:1px solid black;*/
@@ -106,5 +109,5 @@ h3 {
   font-family: 'Lora', serif;
 }
 #wordNow {
-
+  margin: 0;
 }
