@@ -83,7 +83,7 @@ class SpeedReader extends Component {
                   <div className="mode">
                     <input type="radio" name="readMode" value="centre" defaultChecked
                       title="Centre-aligned words"/>
-                    Middle
+                    Middlest
                   </div>
                   <div className="mode">
                     <input type="radio" name="readMode" value="sprits"
