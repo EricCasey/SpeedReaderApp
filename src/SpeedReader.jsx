@@ -88,7 +88,7 @@ class SpeedReader extends Component {
                   <div className="mode">
                     <input type="radio" name="readMode" value="sprits"
                       title="something like for every (arr.length/2)-1 methinks. close enough" />
-                    Sptirx
+                    Sptsdfj
                   </div>
                   <div className="mode">
                     <input type="radio" name="readMode" value="mashed"
